@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'app/wr-theme.scss';
+* {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+body {
+    margin: 0;
+}
+
+.thin-text {
+    font-weight: 100;
+}
+
+.light-text {
+    font-weight: 300;
+}
