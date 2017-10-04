@@ -4,4 +4,8 @@
   <p mdLine>{{activeUsersTotal | commaseparator}} total active users on {{subredditData.length}} subreddits.</p>
   <wr-bar-chart [chartData]="chartData"></wr-bar-chart>
 </md-card>
+<md-card>
+  <md-card-title>Historic data</md-card-title>
+  <wr-line-chart [chartData]="lineChartData"></wr-line-chart>
+</md-card>
 <wr-table [subredditData]="subredditData"></wr-table>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SubredditStats } from '../../models/subreddit-stats';
+import { SubredditStats, SubredditStatSnapshot } from '../../models/subreddit-stats';
 import { ChartData } from '../../models/chart-data';
 import { ApiService } from '../../services/api.service';
+import { DataService } from '../../services/data.service';
 import { getRawSubredditName } from '../../utils/string-utils';
 
 import Chart from 'chart.js';
@@ -22,8 +23,9 @@ export class HomeComponent implements OnInit {
   subreddits: string[];
 
   chartData: ChartData;
+  lineChartData: SubredditStatSnapshot[];
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private dataService: DataService) {
     this.mostBrowsedSubredditList = [];
     this.subredditData = [];
     this.activeUsersTotal = 0;
@@ -41,6 +43,9 @@ export class HomeComponent implements OnInit {
     }
 
     this.subreddits = this.apiService.getDefaultSubreddits();
+  }
+
+  ngOnInit() {
     this.apiService.getSubreddits().subscribe((srList) => {
       console.log('Subscription fired!');
       this.subreddits = srList;
@@ -51,10 +56,13 @@ export class HomeComponent implements OnInit {
       console.log(this.subredditData);
       this.updateSubreddits();
     });
-  }
-
-  ngOnInit() {
     this.updateSubreddits();
+    this.dataService.getHistoricalData().then((data) => this.lineChartData = data);
+
+    setInterval(() => {
+      this.updateSubreddits();
+      this.dataService.getHistoricalData().then((data) => this.lineChartData = data);
+    }, 30000);
   }
 
   updateSubreddits(): void {
