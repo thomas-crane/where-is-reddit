@@ -5,7 +5,33 @@ import { SubredditStatSnapshot } from '../models/subreddit-stats';
 @Injectable()
 export class DataService {
 
+  granularity = 3;
+  loadCount = 24;
+
   constructor(private db: AngularFireDatabase) { }
+
+  /**
+   * Updates the loadCount value. This controls
+   * how many SubredditStatSnapshots will be loaded.
+   * The snapshots are 5 minutes apart, so a loadCount
+   * of 12 would be 1 hour of data.
+   * @param newCount The new loudCount value.
+   */
+  updateLoadCount(newCount: number): void {
+    this.loadCount = newCount;
+  }
+
+  /**
+   * Updates the granularity value. This controls how
+   * 'fine' the data is. getHistoricalData will return all
+   * data except every Nth element where N is the granularity
+   * value. E.g. if the granularity is 5, every 5th element of the
+   * historical data will be removed.
+   * @param newGranularity The new granularity value.
+   */
+  updateGranularity(newGranularity: number): void {
+    this.granularity = newGranularity;
+  }
 
   /**
    * Gets an array of historical data about all of the subreddits
@@ -29,8 +55,14 @@ export class DataService {
    */
   getHistoricalData(): Promise<SubredditStatSnapshot[]> {
     return new Promise((resolve, reject) => {
-      const sub = this.db.list('historic', ref => ref.orderByChild('timestamp').limitToLast(12)).valueChanges();
+      const sub = this.db.list('historic', ref => ref.orderByChild('timestamp').limitToLast(this.loadCount)).valueChanges();
       sub.subscribe((value) => {
+        if (value.length / this.granularity < 2) {
+          this.granularity = (value.length / 2);
+        }
+        value = value.filter((element, i) => {
+          return ((i + 1) % this.granularity === 0);
+        });
         resolve(<SubredditStatSnapshot[]>value);
       }, (error) => {
         reject(error);
