@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { SubredditStats } from '../models/subreddit-stats';
 import { Subject } from 'rxjs/Subject';
 import { HttpErrorResponse } from '@angular/common/http';
+import { getRawSubredditName } from '../utils/string-utils';
 
 const ENDPOINT = 'https://www.reddit.com/r/';
 
@@ -32,6 +33,27 @@ export class ApiService {
       'adviceanimals'
     ];
     this.subreddits.next(this._srList);
+  }
+
+  getDefaultSubreddits(): string[] {
+    return [
+      'askreddit',
+      'news',
+      'pics',
+      'worldnews',
+      'funny',
+      'todayilearned',
+      'aww',
+      'videos',
+      'gaming',
+      'gifs',
+      'nottheonion',
+      'showerthoughts',
+      'movies',
+      'mildlyinteresting',
+      'jokes',
+      'adviceanimals'
+    ];
   }
 
   getStats(subreddit: string): Promise<SubredditStats> {
@@ -83,7 +105,7 @@ export class ApiService {
 
   removeSubreddit(name: string): boolean {
     for (let i = 0; i < this._srList.length; i++) {
-      const compareName = name.replace(/\/?r\//ig, '').toLowerCase();
+      const compareName = getRawSubredditName(name);
       if (this._srList[i] === compareName) {
         const copy = this._srList.slice();
         copy.splice(i, 1);
@@ -101,6 +123,6 @@ export class ApiService {
   }
 
   private getEndpoint(subreddit: string): string {
-    return (ENDPOINT + subreddit.trim().replace(/\/?r\//ig, '').replace(/[/\\]/ig, '') + '/about.json');
+    return (ENDPOINT + getRawSubredditName(subreddit).replace(/[/\\]/ig, '') + '/about.json');
   }
 }
