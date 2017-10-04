@@ -1,0 +1,16 @@
+:host {
+    font-family: 'Roboto', sans-serif;
+    md-card {
+        margin: 8px 0;
+    }
+}
+
+.dual-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .item {
+        margin: 8px;
+        flex: 1 1 auto;
+    }
+}
