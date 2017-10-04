@@ -1,13 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
-  MdToolbarModule,
-  MdCardModule
+  MatToolbarModule,
+  MatCardModule,
+  MatListModule,
+  MatIconModule,
+  MatTableModule,
+  MatInputModule,
+  MatButtonModule
 } from '@angular/material';
 
 const COMPONENTS = [
-  MdToolbarModule,
-  MdCardModule
+  MatToolbarModule,
+  MatCardModule,
+  MatListModule,
+  MatIconModule,
+  MatTableModule,
+  MatInputModule,
+  MatButtonModule
 ];
 
 @NgModule({
