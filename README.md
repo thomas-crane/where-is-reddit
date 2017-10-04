@@ -1,27 +1,31 @@
-# WhereIsReddit
+# Where is Reddit
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.0.
 
-## Development server
+This project uses [Chartjs](http://www.chartjs.org/) to visualise the traffic of the active users on reddit.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This web app shows several different visualisations of where the most active users are on reddit. There is also a database with data snapshots being uploaded every 5 minutes to provide historical data.
 
-## Code scaffolding
+## Get started
+To get started clone this repo to your computer somewhere.
+Open a console window in the directory of the cloned repo and use the command
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+`npm install`
 
-## Build
+This will install all dependencies of the project (Angular has a lot, so this might take a long time).
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Make sure you also have the Angular CLI installed. You can use `ng --version` to see if it is installed.
+If it is not installed you can install it by using the command
 
-## Running unit tests
+`npm install -g @angular/cli`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Running the web app
+Run `ng serve` to build and run the web app. Open a browser and navigate to `http://localhost:4200` to see the app.
+The app will rebuild if changes are made to the source code.
 
-## Running end-to-end tests
+## Building the web app
+Run `ng build` to build the web app. The build will go into the `dist/` directory.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
 
 ## Further help
 
