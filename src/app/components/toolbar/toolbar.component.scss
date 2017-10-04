@@ -1,0 +1,36 @@
+md-toolbar {
+    z-index: 100;
+    margin-bottom: 16px;
+    .title {
+        font-size: 1.25rem;
+    }
+    .spacer {
+        flex: 1 1 auto;
+    }
+}
+
+.button {
+    margin: 0 8px;
+    text-transform: uppercase;
+    .inner-button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        img {
+            padding-right: 8px;
+        }
+        md-icon {
+            margin-right: 8px;
+        }
+    }
+}
+
+.raised-button {
+    @extend .button;
+    color: black;
+}
+
+.info-area {
+    display: block;
+}

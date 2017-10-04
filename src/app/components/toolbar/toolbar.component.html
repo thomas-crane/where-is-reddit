@@ -1,0 +1,17 @@
+<md-toolbar color="primary" class="mat-typography mat-elevation-z6">
+  <span class="title">Where is Reddit</span>
+  <span class="spacer"></span>
+  <button class="regular-text raised-button" md-raised-button>
+    <span class="inner-button">
+      <img width="24" height="24" src="assets/images/github.svg" />GitHub
+    </span>
+  </button>
+  <button class="regular-text button" md-button (click)="toggleAbout()">
+    <span class="inner-button">
+      <md-icon>info_outline</md-icon>About
+    </span>
+  </button>
+</md-toolbar>
+<span class="info-area" *ngIf="infoActive">
+  <wr-about></wr-about>
+</span>
