@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SubredditStats } from '../../models/subreddit-stats';
 import { ChartData } from '../../models/chart-data';
 import { ApiService } from '../../services/api.service';
+import { getRawSubredditName } from '../../utils/string-utils';
 
 import Chart from 'chart.js';
 
@@ -39,21 +40,21 @@ export class HomeComponent implements OnInit {
       ]
     }
 
-    this.subreddits = [];
+    this.subreddits = this.apiService.getDefaultSubreddits();
     this.apiService.getSubreddits().subscribe((srList) => {
       console.log('Subscription fired!');
       this.subreddits = srList;
       if (!this.subreddits) {
         this.subreddits = [];
       }
-      this.subredditData = this.subredditData.filter(sr => srList.includes(sr.name));
+      this.subredditData = this.subredditData.filter(sr => srList.includes(getRawSubredditName(sr.name)));
       console.log(this.subredditData);
       this.updateSubreddits();
     });
   }
 
   ngOnInit() {
-
+    this.updateSubreddits();
   }
 
   updateSubreddits(): void {
