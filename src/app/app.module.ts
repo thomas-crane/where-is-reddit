@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +16,8 @@ import { TopListComponent } from './components/top-list/top-list.component';
 import { TableComponent } from './components/table/table.component';
 import { CommaseparatorPipe } from './pipes/commaseparator.pipe';
 import { ShorthandnumberPipe } from './pipes/shorthandnumber.pipe';
+import { LineChartComponent } from './components/line-chart/line-chart.component';
+import { DataService } from './services/data.service';
 
 @NgModule({
   declarations: [
@@ -22,16 +27,19 @@ import { ShorthandnumberPipe } from './pipes/shorthandnumber.pipe';
     TopListComponent,
     TableComponent,
     CommaseparatorPipe,
-    ShorthandnumberPipe
+    ShorthandnumberPipe,
+    LineChartComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
     HttpClientModule,
     AppRoutingModule,
     MaterialImportsModule
   ],
-  providers: [ApiService],
+  providers: [ApiService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
