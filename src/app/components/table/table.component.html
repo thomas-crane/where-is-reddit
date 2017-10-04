@@ -1,0 +1,48 @@
+<md-card>
+  <md-card-title>Subreddits</md-card-title>
+  <span class="table-form">
+    <md-form-field class="table-form-item">
+      <input #in mdInput placeholder="Add another subreddit to track." required>
+    </md-form-field>
+    <span class="table-form-item button-container">
+      <button md-raised-button color="primary" (click)="addSub(in.value); in.value = '';">Add</button>
+    </span>
+  </span>
+  <span class="input-error" *ngFor="let err of inputErrors">
+      {{err}}
+  </span>
+  <md-table #table [dataSource]="dataSource">
+    <!-- Position Column -->
+    <ng-container mdColumnDef="position">
+      <md-header-cell *mdHeaderCellDef> No. </md-header-cell>
+      <md-cell *mdCellDef="let item">{{item.position}}</md-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container mdColumnDef="name">
+      <md-header-cell *mdHeaderCellDef> Name </md-header-cell>
+      <md-cell *mdCellDef="let item">{{item.name}}</md-cell>
+    </ng-container>
+
+    <!-- Active Column -->
+    <ng-container mdColumnDef="active">
+      <md-header-cell *mdHeaderCellDef> Active users </md-header-cell>
+      <md-cell *mdCellDef="let item">{{item.active | commaseparator}}</md-cell>
+    </ng-container>
+
+    <!-- Total Column -->
+    <ng-container mdColumnDef="total">
+      <md-header-cell *mdHeaderCellDef> Subscribers </md-header-cell>
+      <md-cell *mdCellDef="let item">{{item.subscribers | shorthandnumber}}</md-cell>
+    </ng-container>
+
+    <!-- Remove Column -->
+    <ng-container mdColumnDef="remove">
+      <md-header-cell *mdHeaderCellDef> Remove </md-header-cell>
+      <md-cell *mdCellDef="let item"><i class="material-icons remove" (click)="removeItem(item.name)">clear</i></md-cell>
+    </ng-container>
+
+    <md-header-row *mdHeaderRowDef="displayedColumns"></md-header-row>
+    <md-row *mdRowDef="let row; columns: displayedColumns"></md-row>
+  </md-table>
+</md-card>
