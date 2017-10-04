@@ -1,5 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+/**
+ * Converts the number to a shorthand string.
+ * Usage:
+ *  value | shorthandnumber
+ * Example:
+ *  {{ 12430145 | shorthandnumber }}
+ *  formats to: 12.43M
+ */
 @Pipe({
   name: 'shorthandnumber'
 })
