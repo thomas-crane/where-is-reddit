@@ -4,18 +4,28 @@
   <p mdLine>{{activeUsersTotal | commaseparator}} total active users on {{subredditData.length}} subreddits.</p>
   <wr-bar-chart [chartData]="subredditData"></wr-bar-chart>
 </md-card>
+<wr-table [subredditData]="subredditData"></wr-table>
 <md-card>
   <md-card-title>Historic data</md-card-title>
   <span class="chart-controls">
     <span class="slider-container">
       <p>How far back to load</p>
       <md-slider invert min="6" max="72" value="12" #lcslider (input)="loadCountChanged(lcslider.value)"></md-slider>
+      <span class="slider-labels">
+        6 Hours
+        <span class="spacer"></span>
+        30 Minutes
+      </span>
     </span>
     <span class="slider-container">
         <p>Quality</p>
         <md-slider min="1" max="5" step="1" value="3" #qslider (input)="qualityChanged(6 - qslider.value)"></md-slider>
+        <span class="slider-labels">
+            Low
+            <span class="spacer"></span>
+            High
+          </span>
       </span>
   </span>
   <wr-line-chart [chartData]="lineChartData"></wr-line-chart>
 </md-card>
-<wr-table [subredditData]="subredditData"></wr-table>

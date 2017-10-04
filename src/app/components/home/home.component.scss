@@ -22,7 +22,7 @@
 }
 
 .slider-container {
-    margin: 8px;
+    margin: 8px 12px;
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
@@ -31,7 +31,11 @@
         margin-bottom: 0;
     }
 }
-
-.slider {
-
+.slider-labels {
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 auto;
+    .spacer {
+        flex: 1 1 auto;
+    }
 }
