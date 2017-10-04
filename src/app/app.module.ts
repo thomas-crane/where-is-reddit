@@ -18,6 +18,8 @@ import { CommaseparatorPipe } from './pipes/commaseparator.pipe';
 import { ShorthandnumberPipe } from './pipes/shorthandnumber.pipe';
 import { LineChartComponent } from './components/line-chart/line-chart.component';
 import { DataService } from './services/data.service';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { DataService } from './services/data.service';
     TableComponent,
     CommaseparatorPipe,
     ShorthandnumberPipe,
-    LineChartComponent
+    LineChartComponent,
+    ToolbarComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
