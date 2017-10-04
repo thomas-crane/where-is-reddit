@@ -7,7 +7,8 @@ import {
   MatIconModule,
   MatTableModule,
   MatInputModule,
-  MatButtonModule
+  MatButtonModule,
+  MatSliderModule
 } from '@angular/material';
 
 const COMPONENTS = [
@@ -17,7 +18,8 @@ const COMPONENTS = [
   MatIconModule,
   MatTableModule,
   MatInputModule,
-  MatButtonModule
+  MatButtonModule,
+  MatSliderModule
 ];
 
 @NgModule({

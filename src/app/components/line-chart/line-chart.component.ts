@@ -45,7 +45,7 @@ export class LineChartComponent implements OnInit, OnChanges {
     if (!this.chart) {
       return;
     }
-    this.chart.data.labels = this.chartData.map(cd => moment(cd.timestamp).format('h:mm a'));
+    this.chart.data.labels = this.chartData.map(cd => moment(cd.timestamp).local().format('h:mm a'));
 
     const records = {};
     for (let i = 0; i < this.chartData.length; i++) {
