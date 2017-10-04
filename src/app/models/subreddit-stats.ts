@@ -4,3 +4,8 @@ export interface SubredditStats {
     active: number,
     subscribers: number
 }
+
+export interface SubredditStatSnapshot {
+    timestamp: number;
+    data: SubredditStats[]
+}
