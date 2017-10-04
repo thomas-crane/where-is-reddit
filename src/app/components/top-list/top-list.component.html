@@ -1,0 +1,10 @@
+<md-card>
+  <md-card-title>Top 3 subreddits.</md-card-title>
+  <md-list>
+      <md-list-item *ngFor="let item of list; let i = index">
+        <h4 mdLine>{{i + 1}}. {{item.name}}</h4>
+        <p class="subtitle" mdLine>{{item.active | commaseparator}} active users.</p>
+        <p class="subtitle" mdLine>{{item.percentage_total}}% of total active users.</p>
+      </md-list-item>
+  </md-list>
+</md-card>
