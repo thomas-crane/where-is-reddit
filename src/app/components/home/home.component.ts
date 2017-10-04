@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { SubredditStats } from '../../models/subreddit-stats';
 import { ChartData } from '../../models/chart-data';
 import { ApiService } from '../../services/api.service';
-import { BLUE_COLORS } from '../../utils/colors';
 
 import Chart from 'chart.js';
 
