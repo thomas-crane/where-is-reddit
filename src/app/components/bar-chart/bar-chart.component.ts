@@ -35,7 +35,7 @@ export class BarChartComponent implements OnInit, OnChanges {
       },
       options: {
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
         responsiveAnimationDuration: 0
       }
     });
