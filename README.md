@@ -2,9 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.0.
 
-This project uses [Chartjs](http://www.chartjs.org/) to visualise the traffic of the active users on reddit.
+This web app uses [Chartjs](http://www.chartjs.org/) to show several different visualisations of where the most active users are on reddit. There is also a database with data snapshots being uploaded every 5 minutes to provide historical data.
 
-This web app shows several different visualisations of where the most active users are on reddit. There is also a database with data snapshots being uploaded every 5 minutes to provide historical data.
+This web app is hosted using Firebase and can be [found here.](https://where-is-reddit.firebaseapp.com/)
 
 ## Get started
 To get started clone this repo to your computer somewhere.
