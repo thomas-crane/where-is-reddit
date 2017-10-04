@@ -13,10 +13,10 @@ export class ShorthandnumberPipe implements PipeTransform {
     if (value / 1000000.0 >= 1) {
       return ((value / 1000000.0).toFixed(2) + 'M');
     }
-    if (value / 1000.0 >= 1) {
-      return ((value / 1000.0).toFixed(2) + 'K');
+    if (value / 10000.0 >= 1) {
+      return ((value / 10000.0).toFixed(2) + 'K');
     }
-    return value.toString();
+    return value.toLocaleString();
   }
 
 }
