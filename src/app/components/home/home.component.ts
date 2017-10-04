@@ -51,6 +51,16 @@ export class HomeComponent implements OnInit {
     }, 30000);
   }
 
+  qualityChanged(value: number): void {
+    this.dataService.updateGranularity(value);
+    this.dataService.getHistoricalData().then((data) => this.lineChartData = data);
+  }
+
+  loadCountChanged(value: number): void {
+    this.dataService.updateLoadCount(value);
+    this.dataService.getHistoricalData().then((data) => this.lineChartData = data);
+  }
+
   updateSubreddits(): void {
     if (this.subreddits.length === 0) {
       this.integrateNewData(null);

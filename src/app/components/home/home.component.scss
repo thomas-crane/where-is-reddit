@@ -14,3 +14,24 @@
         flex: 1 1 auto;
     }
 }
+
+.chart-controls {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.slider-container {
+    margin: 8px;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-width: 300px;
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.slider {
+
+}
