@@ -22,38 +22,23 @@ export class HomeComponent implements OnInit {
 
   subreddits: string[];
 
-  chartData: ChartData;
   lineChartData: SubredditStatSnapshot[];
 
   constructor(private apiService: ApiService, private dataService: DataService) {
     this.mostBrowsedSubredditList = [];
     this.subredditData = [];
     this.activeUsersTotal = 0;
-    this.chartData = {
-      datasets: [{
-        label: 'Loading',
-        data: [0],
-        backgroundColor: 'rgba(62,172,255,0.5)',
-        borderColor: 'rgba(62,172,255,1)',
-        borderWidth: 2
-      }],
-      labels: [
-        'Loading'
-      ]
-    }
 
     this.subreddits = this.apiService.getDefaultSubreddits();
   }
 
   ngOnInit() {
     this.apiService.getSubreddits().subscribe((srList) => {
-      console.log('Subscription fired!');
       this.subreddits = srList;
       if (!this.subreddits) {
         this.subreddits = [];
       }
       this.subredditData = this.subredditData.filter(sr => srList.includes(getRawSubredditName(sr.name)));
-      console.log(this.subredditData);
       this.updateSubreddits();
     });
     this.updateSubreddits();
@@ -62,6 +47,7 @@ export class HomeComponent implements OnInit {
     setInterval(() => {
       this.updateSubreddits();
       this.dataService.getHistoricalData().then((data) => this.lineChartData = data);
+      console.log('Refreshed data.');
     }, 30000);
   }
 
@@ -74,6 +60,8 @@ export class HomeComponent implements OnInit {
       const sr = this.subreddits[i];
       this.apiService.getStats(sr).then((data) => {
         this.integrateNewData(data);
+      }).catch((error) => {
+        console.log('Failed to load ' + sr);
       });
     }
   }
@@ -101,17 +89,6 @@ export class HomeComponent implements OnInit {
       srStat['percentage_total'] = Math.round((srStat.active / this.activeUsersTotal) * 100);
     });
     this.mostBrowsedSubredditList = all.sort((a, b) => b.active - a.active).slice(0, 3);
-
-    this.chartData = {
-      datasets: [{
-        label: 'Active users',
-        data: all.map(srd => srd.active),
-        backgroundColor: 'rgba(62,172,255,0.5)',
-        borderColor: 'rgba(62,172,255,1)',
-        borderWidth: 2
-      }],
-      labels: all.map(srd => srd.name),
-    };
 
     this.subredditData = all;
   }

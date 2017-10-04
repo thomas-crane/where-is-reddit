@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import Chart from 'chart.js';
-import { ChartData } from '../../models/chart-data';
+import { SubredditStats } from '../../models/subreddit-stats';
 
 @Component({
   selector: 'wr-bar-chart',
@@ -9,24 +9,13 @@ import { ChartData } from '../../models/chart-data';
 })
 export class BarChartComponent implements OnInit, OnChanges {
 
-  @Input()
-  chartData: ChartData;
   chart: Chart;
 
+  @Input()
+  chartData: SubredditStats[];
+
   constructor() {
-    this.chartData = {
-      datasets: [{
-        label: 'Loading',
-        data: [0],
-        backgroundColor: 'rgba(62,172,255,0.5)',
-        borderColor: 'rgba(62,172,255,1)',
-        borderWidth: 2
-      }],
-      labels: [
-        'Loading'
-      ]
-    }
-    this.chart = null;
+    this.chartData = [];
   }
 
   ngOnInit() {
@@ -34,27 +23,29 @@ export class BarChartComponent implements OnInit, OnChanges {
     const ctx = elem.getContext('2d');
     this.chart = new Chart(ctx, {
       type: 'bar',
-      data: this.chartData,
+      data: {
+        labels: [],
+        datasets: [{
+          label: 'Active users',
+          data: [],
+          backgroundColor: 'rgba(62,172,255,0.5)',
+          borderColor: 'rgba(62,172,255,1)',
+          borderWidth: 2
+        }]
+      },
       options: {
         responsive: true,
         maintainAspectRatio: true,
         responsiveAnimationDuration: 0
       }
     });
-    this.updateChart();
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.chartData.currentValue !== changes.chartData.previousValue) {
-      this.updateChart();
-    }
-  }
-
-  private updateChart() {
     if (this.chart) {
-      this.chart.data = this.chartData;
+      this.chart.data.labels = this.chartData.map(srd => srd.name);
+      this.chart.data.datasets[0].data = this.chartData.map(srd => srd.active);
       this.chart.update();
     }
   }
-
 }

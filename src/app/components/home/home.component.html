@@ -2,7 +2,7 @@
 <md-card>
   <md-card-title>Stats</md-card-title>
   <p mdLine>{{activeUsersTotal | commaseparator}} total active users on {{subredditData.length}} subreddits.</p>
-  <wr-bar-chart [chartData]="chartData"></wr-bar-chart>
+  <wr-bar-chart [chartData]="subredditData"></wr-bar-chart>
 </md-card>
 <md-card>
   <md-card-title>Historic data</md-card-title>
