@@ -1,0 +1,8 @@
+.chart-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    canvas {
+        max-width: 1200px;
+    }
+}
