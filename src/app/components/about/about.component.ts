@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'wr-about',
@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
+  @Output()
+  close = new EventEmitter<any>();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  emitClose() {
+    this.close.emit();
   }
 
 }
