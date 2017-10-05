@@ -13,5 +13,5 @@
   </button>
 </md-toolbar>
 <span class="info-area" *ngIf="infoActive">
-  <wr-about></wr-about>
+  <wr-about (close)="infoActive = false;"></wr-about>
 </span>
