@@ -1,58 +1,58 @@
-<md-expansion-panel>
-  <md-expansion-panel-header>
-    <md-panel-title>Subreddits</md-panel-title>
-    <md-panel-description>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>Subreddits</mat-panel-title>
+    <mat-panel-description>
       Change the subreddits that appear here.
-    </md-panel-description>
-  </md-expansion-panel-header>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
   <span class="table-form">
-      <md-form-field class="table-form-item">
-        <input #in mdInput placeholder="Add another subreddit to track." required>
-      </md-form-field>
+      <mat-form-field class="table-form-item">
+        <input #in matInput placeholder="Add another subreddit to track." required>
+      </mat-form-field>
       <span class="table-form-item button-container">
-        <button md-raised-button color="primary" (click)="addSub(in.value); in.value = '';">Add</button>
+        <button mat-raised-button color="primary" (click)="addSub(in.value); in.value = '';">Add</button>
       </span>
     </span>
     <span class="input-error" *ngFor="let err of inputErrors">
         {{err}}
     </span>
-    <md-table #table [dataSource]="dataSource">
+    <mat-table #table [dataSource]="dataSource">
       <!-- Position Column -->
-      <ng-container mdColumnDef="position">
-        <md-header-cell *mdHeaderCellDef> No. </md-header-cell>
-        <md-cell *mdCellDef="let item">{{item.position}}</md-cell>
+      <ng-container matColumnDef="position">
+        <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+        <mat-cell *matCellDef="let item">{{item.position}}</mat-cell>
       </ng-container>
   
       <!-- Name Column -->
-      <ng-container mdColumnDef="name">
-        <md-header-cell *mdHeaderCellDef> Name </md-header-cell>
-        <md-cell *mdCellDef="let item">{{item.name}}</md-cell>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let item">{{item.name}}</mat-cell>
       </ng-container>
   
       <!-- Active Column -->
-      <ng-container mdColumnDef="active">
-        <md-header-cell *mdHeaderCellDef> Active users </md-header-cell>
-        <md-cell *mdCellDef="let item">{{item.active | commaseparator}}</md-cell>
+      <ng-container matColumnDef="active">
+        <mat-header-cell *matHeaderCellDef> Active users </mat-header-cell>
+        <mat-cell *matCellDef="let item">{{item.active | commaseparator}}</mat-cell>
       </ng-container>
   
       <!-- Total Column -->
-      <ng-container mdColumnDef="total">
-        <md-header-cell *mdHeaderCellDef> Subscribers </md-header-cell>
-        <md-cell *mdCellDef="let item">{{item.subscribers | shorthandnumber}}</md-cell>
+      <ng-container matColumnDef="total">
+        <mat-header-cell *matHeaderCellDef> Subscribers </mat-header-cell>
+        <mat-cell *matCellDef="let item">{{item.subscribers | shorthandnumber}}</mat-cell>
       </ng-container>
   
       <!-- Remove Column -->
-      <ng-container mdColumnDef="remove">
-        <md-header-cell *mdHeaderCellDef> Remove </md-header-cell>
-        <md-cell *mdCellDef="let item"><i class="material-icons remove" (click)="removeItem(item.name)">clear</i></md-cell>
+      <ng-container matColumnDef="remove">
+        <mat-header-cell *matHeaderCellDef> Remove </mat-header-cell>
+        <mat-cell *matCellDef="let item"><i class="material-icons remove" (click)="removeItem(item.name)">clear</i></mat-cell>
       </ng-container>
   
-      <md-header-row *mdHeaderRowDef="displayedColumns"></md-header-row>
-      <md-row *mdRowDef="let row; columns: displayedColumns"></md-row>
-    </md-table>
-</md-expansion-panel>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+</mat-expansion-panel>
 
-<!-- <md-card>
-  <md-card-title>Subreddits</md-card-title>
+<!-- <mat-card>
+  <mat-card-title>Subreddits</mat-card-title>
   
-</md-card> -->
+</mat-card> -->

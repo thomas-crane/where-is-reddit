@@ -1,4 +1,4 @@
-md-toolbar {
+mat-toolbar {
     z-index: 100;
     margin-bottom: 16px;
     .title {
@@ -20,7 +20,7 @@ md-toolbar {
         img {
             padding-right: 8px;
         }
-        md-icon {
+        mat-icon {
             margin-right: 8px;
         }
     }

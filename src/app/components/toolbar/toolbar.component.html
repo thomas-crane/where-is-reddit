@@ -1,17 +1,17 @@
-<md-toolbar color="primary" class="mat-typography mat-elevation-z6">
+<mat-toolbar color="primary" class="mat-typography mat-elevation-z6">
   <span class="title">Where is Reddit</span>
   <span class="spacer"></span>
-  <a class="regular-text raised-button" md-raised-button target="_blank" href="//github.com/thomas-crane/where-is-reddit">
+  <a class="regular-text raised-button" mat-raised-button target="_blank" href="//github.com/thomas-crane/where-is-reddit">
     <span class="inner-button">
       <img width="24" height="24" src="assets/images/github.svg" />GitHub
     </span>
   </a>
-  <button class="regular-text button" md-button (click)="toggleAbout()">
+  <button class="regular-text button" mat-button (click)="toggleAbout()">
     <span class="inner-button">
-      <md-icon>info_outline</md-icon>About
+      <mat-icon>info_outline</mat-icon>About
     </span>
   </button>
-</md-toolbar>
+</mat-toolbar>
 <span class="info-area" *ngIf="infoActive">
   <wr-about (close)="infoActive = false;"></wr-about>
 </span>
