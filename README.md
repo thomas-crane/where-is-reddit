@@ -6,6 +6,8 @@ This web app uses [Chartjs](http://www.chartjs.org/) to show several different v
 
 This web app is hosted using Firebase and can be [found here.](https://where-is-reddit.firebaseapp.com/)
 
+[![Build Status](https://travis-ci.org/thomas-crane/where-is-reddit.svg?branch=master)](https://travis-ci.org/thomas-crane/where-is-reddit)
+
 ## Get started
 To get started clone this repo to your computer somewhere.
 Open a console window in the directory of the cloned repo and use the command
