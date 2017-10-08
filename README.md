@@ -4,6 +4,7 @@ This web app has a Firebase backend used to store data about several subreddits 
 provide some trend data on active users.
 
 This web app is also hosted using Firebase and can be [found here.](https://where-is-reddit.firebaseapp.com/)
+
 [![Build Status](https://travis-ci.org/thomas-crane/where-is-reddit.svg?branch=master)](https://travis-ci.org/thomas-crane/where-is-reddit)
 
 The master branch of this repository is the source code of the app hosted on Firebase. The hosted app is always up to date with this code because the deployment to Firebase occurs when the master branch is updated.
